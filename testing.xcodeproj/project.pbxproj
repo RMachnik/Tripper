@@ -16,11 +16,11 @@
 		55A393F219A989E400535411 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A393ED19A989E400535411 /* DetailVC.swift */; };
 		55A393F319A989E400535411 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A393EE19A989E400535411 /* MainVC.swift */; };
 		55A393F419A989E400535411 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A393EF19A989E400535411 /* PersistenceHelper.swift */; };
-		55A393F519A989E400535411 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A393F019A989E400535411 /* TaskManager.swift */; };
 		55A393F719A98B2000535411 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A393F619A98B2000535411 /* NavController.swift */; };
 		A96E832E1A4EAB4B00289C70 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E832D1A4EAB4B00289C70 /* LocationService.swift */; };
 		A96E83301A4EAC0B00289C70 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96E832F1A4EAC0B00289C70 /* MapKit.framework */; };
 		A96E83321A4EAEB800289C70 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96E83311A4EAEB800289C70 /* CoreLocation.framework */; };
+		A96E83341A4F2F2000289C70 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E83331A4F2F2000289C70 /* EventManager.swift */; };
 		A9FA81271A376C9600DCE603 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9FA81261A376C9600DCE603 /* Photos.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,11 +48,11 @@
 		55A393ED19A989E400535411 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		55A393EE19A989E400535411 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		55A393EF19A989E400535411 /* PersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
-		55A393F019A989E400535411 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		55A393F619A98B2000535411 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		A96E832D1A4EAB4B00289C70 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		A96E832F1A4EAC0B00289C70 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A96E83311A4EAEB800289C70 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A96E83331A4F2F2000289C70 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		A9FA81261A376C9600DCE603 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 				A96E832D1A4EAB4B00289C70 /* LocationService.swift */,
 				55A393F619A98B2000535411 /* NavController.swift */,
 				55A393EF19A989E400535411 /* PersistenceHelper.swift */,
-				55A393F019A989E400535411 /* TaskManager.swift */,
+				A96E83331A4F2F2000289C70 /* EventManager.swift */,
 				5595A0C219A94B1D00A7EB86 /* Images.xcassets */,
 				5595A0BA19A94B1D00A7EB86 /* testing.xcdatamodeld */,
 				5595A0B619A94B1D00A7EB86 /* Supporting Files */,
@@ -241,9 +241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96E83341A4F2F2000289C70 /* EventManager.swift in Sources */,
 				55A393F719A98B2000535411 /* NavController.swift in Sources */,
 				5595A0BC19A94B1D00A7EB86 /* testing.xcdatamodeld in Sources */,
-				55A393F519A989E400535411 /* TaskManager.swift in Sources */,
 				5595A0B919A94B1D00A7EB86 /* AppDelegate.swift in Sources */,
 				55A393F319A989E400535411 /* MainVC.swift in Sources */,
 				55A393F119A989E400535411 /* AddTaskVC.swift in Sources */,

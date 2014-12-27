@@ -25,9 +25,9 @@ class EventManager: NSObject {
         }
         
     }
-
+    
     func addEvent(name:String, desc: String, subm: String,location: String,image : String){
- 
+        
         var dicTask: Dictionary<String, String> = Dictionary<String,String>()
         dicTask["name"] = name
         dicTask["desc"] = desc
