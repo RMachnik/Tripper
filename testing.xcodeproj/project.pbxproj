@@ -21,6 +21,9 @@
 		A96E83301A4EAC0B00289C70 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96E832F1A4EAC0B00289C70 /* MapKit.framework */; };
 		A96E83321A4EAEB800289C70 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96E83311A4EAEB800289C70 /* CoreLocation.framework */; };
 		A96E83341A4F2F2000289C70 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E83331A4F2F2000289C70 /* EventManager.swift */; };
+		A96E833A1A4F535B00289C70 /* PhotoAlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E83391A4F535B00289C70 /* PhotoAlbumVC.swift */; };
+		A96E833E1A4F565B00289C70 /* ViewPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E833D1A4F565B00289C70 /* ViewPhotoVC.swift */; };
+		A96E83401A4F568500289C70 /* PhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E833F1A4F568500289C70 /* PhotoThumbnail.swift */; };
 		A9FA81271A376C9600DCE603 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9FA81261A376C9600DCE603 /* Photos.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		A96E832F1A4EAC0B00289C70 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A96E83311A4EAEB800289C70 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A96E83331A4F2F2000289C70 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		A96E83391A4F535B00289C70 /* PhotoAlbumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumVC.swift; sourceTree = "<group>"; };
+		A96E833D1A4F565B00289C70 /* ViewPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewPhotoVC.swift; path = ../ViewPhotoVC.swift; sourceTree = "<group>"; };
+		A96E833F1A4F568500289C70 /* PhotoThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnail.swift; sourceTree = "<group>"; };
 		A9FA81261A376C9600DCE603 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -101,15 +107,12 @@
 		5595A0B519A94B1D00A7EB86 /* testing */ = {
 			isa = PBXGroup;
 			children = (
+				A96E83441A4F570200289C70 /* VC */,
+				A96E83431A4F56D200289C70 /* Data */,
+				A96E83421A4F56C000289C70 /* Location */,
+				A96E83411A4F56A300289C70 /* Photo */,
 				5595A0BF19A94B1D00A7EB86 /* Main.storyboard */,
 				5595A0B819A94B1D00A7EB86 /* AppDelegate.swift */,
-				55A393EE19A989E400535411 /* MainVC.swift */,
-				55A393ED19A989E400535411 /* DetailVC.swift */,
-				55A393EC19A989E400535411 /* AddTaskVC.swift */,
-				A96E832D1A4EAB4B00289C70 /* LocationService.swift */,
-				55A393F619A98B2000535411 /* NavController.swift */,
-				55A393EF19A989E400535411 /* PersistenceHelper.swift */,
-				A96E83331A4F2F2000289C70 /* EventManager.swift */,
 				5595A0C219A94B1D00A7EB86 /* Images.xcassets */,
 				5595A0BA19A94B1D00A7EB86 /* testing.xcdatamodeld */,
 				5595A0B619A94B1D00A7EB86 /* Supporting Files */,
@@ -140,6 +143,44 @@
 				5595A0CD19A94B1D00A7EB86 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A96E83411A4F56A300289C70 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				A96E833F1A4F568500289C70 /* PhotoThumbnail.swift */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
+		A96E83421A4F56C000289C70 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				A96E832D1A4EAB4B00289C70 /* LocationService.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		A96E83431A4F56D200289C70 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A96E83331A4F2F2000289C70 /* EventManager.swift */,
+				55A393EF19A989E400535411 /* PersistenceHelper.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		A96E83441A4F570200289C70 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				55A393F619A98B2000535411 /* NavController.swift */,
+				A96E833D1A4F565B00289C70 /* ViewPhotoVC.swift */,
+				A96E83391A4F535B00289C70 /* PhotoAlbumVC.swift */,
+				55A393EC19A989E400535411 /* AddTaskVC.swift */,
+				55A393ED19A989E400535411 /* DetailVC.swift */,
+				55A393EE19A989E400535411 /* MainVC.swift */,
+			);
+			name = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +283,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A96E83341A4F2F2000289C70 /* EventManager.swift in Sources */,
+				A96E83401A4F568500289C70 /* PhotoThumbnail.swift in Sources */,
+				A96E833E1A4F565B00289C70 /* ViewPhotoVC.swift in Sources */,
 				55A393F719A98B2000535411 /* NavController.swift in Sources */,
 				5595A0BC19A94B1D00A7EB86 /* testing.xcdatamodeld in Sources */,
 				5595A0B919A94B1D00A7EB86 /* AppDelegate.swift in Sources */,
+				A96E833A1A4F535B00289C70 /* PhotoAlbumVC.swift in Sources */,
 				55A393F319A989E400535411 /* MainVC.swift in Sources */,
 				55A393F119A989E400535411 /* AddTaskVC.swift in Sources */,
 				55A393F219A989E400535411 /* DetailVC.swift in Sources */,

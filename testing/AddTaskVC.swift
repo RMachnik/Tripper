@@ -3,6 +3,7 @@
 import UIKit
 import Photos
 
+
 class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
     @IBOutlet var txtName: UITextField!
