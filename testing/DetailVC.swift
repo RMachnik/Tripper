@@ -8,13 +8,13 @@ class DetailVC: UIViewController {
     @IBOutlet var cellNameLabel: UILabel!
     @IBOutlet var cellDetailLabel: UILabel!
     @IBOutlet var cellSubmittedLabel: UILabel!
-    @IBOutlet var cellLocationName: UILabel!
+    @IBOutlet var cellLocation: UILabel!
 
     //Receiving variable assigned to MainVC's var "items"
-    var cellName:String = ""
-    var cellDesc:String = ""
-    var cellSubm:String = ""
-    var cellLocation:String = ""
+    var txtCellName:String = ""
+    var txtCellDesc:String = ""
+    var txtCellSubm:String = ""
+    var txtCellLocation:String = ""
     
     required init(coder aDecoder: NSCoder) {
         
@@ -26,13 +26,13 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         
         //Assign your UILabel text to your String
-        cellNameLabel.text = cellName
-        cellDetailLabel.text = cellDesc
-        cellSubmittedLabel.text = cellSubm
-        cellLocationName.text = cellLocation
+        cellNameLabel.text = txtCellName
+        cellDetailLabel.text = txtCellDesc
+        cellSubmittedLabel.text = txtCellSubm
+        cellLocation.text = txtCellLocation
         
         //Assign String var to NavBar title
-        self.title = cellName
+        self.title = txtCellName
         
         cellDetailLabel.numberOfLines = 0
         

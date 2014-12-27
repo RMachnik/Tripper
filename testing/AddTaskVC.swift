@@ -10,14 +10,15 @@ class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerC
     @IBOutlet var txtSubmitted: UITextField!
     @IBOutlet var btnSelectImage: UIButton!
     @IBOutlet var selectedImage: UIImageView!
-    @IBOutlet weak var txtLocationName: UITextField!
+    @IBOutlet weak var location: UITextField!
     
     @IBAction func btnAddTask(){
         
         var name: String = txtName.text
         var description: String = txtDescription.text
         var submitted: String = txtSubmitted.text
-        taskMgr.addTask(name, desc: description, subm: submitted,locationName: txtLocationName.text,image: "imageDesc")
+        var locationName: String  = location.text
+        eventMgr.addEvent(name, desc: description, subm: submitted,location: "locationName-tmp",image: "imageDesc")
         cleanTextForm()
         self.view.endEditing(true)
 
@@ -84,7 +85,7 @@ class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerC
         txtName.text = ""
         txtDescription.text = ""
         txtSubmitted.text = ""
-        txtLocationName.text = ""
+        location.text = ""
     }
     
 }

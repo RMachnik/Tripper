@@ -28,15 +28,15 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return taskMgr.tasks.count
+        return eventMgr.events.count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell { let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "TableView")
         
         //Assign the contents of our var "items" to the textLabel of each cell
-        cell.textLabel?.text = taskMgr.tasks[indexPath.row].name
-        cell.detailTextLabel?.text = taskMgr.tasks[indexPath.row].description
+        cell.textLabel?.text = eventMgr.events[indexPath.row].name
+        cell.detailTextLabel?.text = eventMgr.events[indexPath.row].description
         cell.textLabel?.textColor = UIColor .grayColor()
         cell.detailTextLabel?.textColor = UIColor .orangeColor()
         
@@ -50,10 +50,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var detail:DetailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailVC") as DetailVC
         
         //Reference DetailVC's var "cellName" and assign it to DetailVC's var "items"
-        detail.cellName = taskMgr.tasks[indexPath.row].name
-        detail.cellDesc = taskMgr.tasks[indexPath.row].description
-        detail.cellSubm = taskMgr.tasks[indexPath.row].submitted
-        detail.cellLocation = taskMgr.tasks[indexPath.row].locationName
+        detail.txtCellName = eventMgr.events[indexPath.row].name
+        detail.txtCellDesc = eventMgr.events[indexPath.row].description
+        detail.txtCellSubm = eventMgr.events[indexPath.row].submitted
+        detail.txtCellLocation = eventMgr.events[indexPath.row].location
         
         //Programmatically push to associated VC (DetailVC)
         self.navigationController?.pushViewController(detail, animated: true)
@@ -63,7 +63,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView:UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath:NSIndexPath!){
         
         if(editingStyle == UITableViewCellEditingStyle.Delete){
-            taskMgr.removeTask(indexPath.row)
+            eventMgr.removeTask(indexPath.row)
             table.reloadData()
         }
         

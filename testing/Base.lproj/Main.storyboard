@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="850" y="426"/>
         </scene>
-        <!--AddTaskVC-->
+        <!--Add your event-->
         <scene sceneID="6BO-pG-o5r">
             <objects>
                 <viewController id="PWK-WY-6CV" customClass="AddTaskVC" customModule="testing" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,42 +59,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-nz-hz3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="60" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-nz-hz3">
                                 <rect key="frame" x="16" y="140" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Submitted By" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-yv-cPl">
-                                <rect key="frame" x="16" y="178" width="288" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Who..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-yv-cPl">
+                                <rect key="frame" x="16" y="434" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-Tt-mZT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-Tt-mZT">
                                 <rect key="frame" x="16" y="102" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q32-ZJ-L8x">
+                                <rect key="frame" x="40" y="292" width="240" height="128"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gfM-k3-F13">
+                                <rect key="frame" x="16" y="472" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MW4-t0-xoV">
-                                <rect key="frame" x="16" y="216" width="90" height="30"/>
-                                <state key="normal" title="Select Image">
+                                <rect key="frame" x="16" y="248" width="74" height="30"/>
+                                <state key="normal" title="Add image">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnPhotoAlbum:" destination="PWK-WY-6CV" eventType="touchUpInside" id="lwJ-tQ-vjs"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q32-ZJ-L8x">
-                                <rect key="frame" x="40" y="292" width="240" height="128"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfM-k3-F13">
-                                <rect key="frame" x="40" y="428" width="240" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AddTaskVC" id="VmD-ao-Ivz">
+                    <navigationItem key="navigationItem" title="Add your event" id="VmD-ao-Ivz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yK3-Zc-r2q">
                             <connections>
                                 <action selector="btnCancel" destination="PWK-WY-6CV" id="vzh-di-8y6"/>
@@ -109,7 +109,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="locationName" destination="gfM-k3-F13" id="Da1-Jc-NFT"/>
+                        <outlet property="location" destination="gfM-k3-F13" id="Iiw-qB-cB7"/>
                         <outlet property="selectedImage" destination="q32-ZJ-L8x" id="hAv-X2-6GY"/>
                         <outlet property="txtDescription" destination="wBw-nz-hz3" id="I5y-9I-y8x"/>
                         <outlet property="txtName" destination="YXy-Tt-mZT" id="IKx-1S-oy1"/>
@@ -147,7 +147,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gn1-1C-Gfs">
                                 <rect key="frame" x="0.0" y="505" width="320" height="63"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="posted by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVd-Oh-ERu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="who was there?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVd-Oh-ERu">
                                         <rect key="frame" x="16" y="5" width="288" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,7 +187,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cellDetailLabel" destination="LcY-nB-2m7" id="xOt-gv-QjB"/>
-                        <outlet property="cellLongitudeLabel" destination="zpw-E1-0ju" id="7iB-vD-oLm"/>
+                        <outlet property="cellLocation" destination="zpw-E1-0ju" id="wKf-jI-K7a"/>
                         <outlet property="cellNameLabel" destination="g5J-J6-mFt" id="Bn2-Yd-pbh"/>
                         <outlet property="cellSubmittedLabel" destination="wLu-DI-UUK" id="hrR-nv-DJt"/>
                     </connections>
