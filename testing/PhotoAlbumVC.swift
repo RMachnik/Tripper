@@ -34,23 +34,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.albumFound = true
             self.assetCollection = collection.firstObject as PHAssetCollection
         }else{
-            PHPhotoLibrary.requestAuthorization
-                { (PHAuthorizationStatus status) -> Void in
-                    switch (status)
-                    {
-                    case .Authorized:
-                        // Permission Granted
-                        println("Write your code here")
-                        self.initializeNewPhotoAlbum()
-                    case .Denied:
-                        // Permission Denied
-                        println("User denied")
-                    default:
-                        println("Restricted")
-                    }
-            }
-            
+            requestForPhotoAuthAndInitAlbum()
         }
+    }
+    
+    func requestForPhotoAuthAndInitAlbum(){
+        PHPhotoLibrary.requestAuthorization
+            { (PHAuthorizationStatus status) -> Void in
+                switch (status)
+                {
+                case .Authorized:
+                    // Permission Granted
+                    println("Write your code here")
+                    self.initializeNewPhotoAlbum()
+                case .Denied:
+                    // Permission Denied
+                    println("User denied")
+                default:
+                    println("Restricted")
+                }
+        }
+
     }
     
     func initializeNewPhotoAlbum(){
@@ -103,6 +107,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         picker.allowsEditing = false
         self.presentViewController(picker, animated: true, completion: nil)
     }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier! as String == "viewLargePhoto"){
+            let controller:ViewPhoto = segue.destinationViewController as ViewPhoto
+            let indexPath: NSIndexPath = self.collectionView.indexPathForCell(sender as UICollectionViewCell)!
+            controller.index = indexPath.item
+            controller.photosAsset = self.photosAsset
+            controller.assetCollection = self.assetCollection
+        }
+    }
+
     override func viewWillAppear(animated: Bool) {
         println("ViewWillAppear")
         
@@ -121,26 +141,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier! as String == "viewLargePhoto"){
-            let controller:ViewPhoto = segue.destinationViewController as ViewPhoto
-            let indexPath: NSIndexPath = self.collectionView.indexPathForCell(sender as UICollectionViewCell)!
-            controller.index = indexPath.item
-            controller.photosAsset = self.photosAsset
-            controller.assetCollection = self.assetCollection
-        }
-    }
-    
-    
-    
-    
-    
-    //UICollectionViewDataSource Methods (Remove the "!" on variables in the function prototype)
+    //UICollectionViewDataSource Methods
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         var count: Int = 0
         if(self.photosAsset != nil){

@@ -16,6 +16,25 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     var photosAsset: PHFetchResult!
     var index: Int = 0
     
+    @IBOutlet var imgView : UIImageView!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.hidesBarsOnTap = true    //!!Added Optional Chaining
+        
+        self.displayPhoto()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     //@Return to photos
     @IBAction func btnCancel(sender : AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true) //!!Added Optional Chaining
@@ -73,25 +92,7 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    @IBOutlet var imgView : UIImageView!
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.hidesBarsOnTap = true    //!!Added Optional Chaining
-        
-        self.displayPhoto()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     
     

@@ -138,7 +138,7 @@
                                 <color key="textColor" red="1" green="0.64587526880000001" blue="0.14665162509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gn1-1C-Gfs">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gn1-1C-Gfs">
                                 <rect key="frame" x="0.0" y="505" width="320" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="who was there?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVd-Oh-ERu">
@@ -371,7 +371,6 @@
         <!--Navigation Controller-->
         <scene sceneID="MDg-FA-TRj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U7g-GT-Ze5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zoh-ue-FSQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -388,6 +387,7 @@
                         <segue destination="GUn-ln-yXz" kind="relationship" relationship="rootViewController" id="wpw-WU-YWw"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7g-GT-Ze5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1285" y="1005"/>
         </scene>

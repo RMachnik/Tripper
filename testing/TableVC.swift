@@ -50,11 +50,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         var detail:DetailVC = self.storyboard?.instantiateViewControllerWithIdentifier("DetailVC") as DetailVC
         
         //Reference DetailVC's var "cellName" and assign it to DetailVC's var "items"
-        detail.txtCellName = eventMgr.events[indexPath.row].name
-        detail.txtCellDesc = eventMgr.events[indexPath.row].description
-        detail.txtCellSubm = eventMgr.events[indexPath.row].submitted
-        detail.txtCellLocation = eventMgr.events[indexPath.row].location
-        
+        detail.eventId = indexPath.row
         //Programmatically push to associated VC (DetailVC)
         self.navigationController?.pushViewController(detail, animated: true)
     }
