@@ -9,8 +9,9 @@
 
 import UIKit
 import Photos
+import MessageUI
 
-class ViewPhoto: UIViewController {
+class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     var assetCollection: PHAssetCollection!
     var photosAsset: PHFetchResult!
     var index: Int = 0
@@ -23,6 +24,13 @@ class ViewPhoto: UIViewController {
     //@Export photo
     @IBAction func btnExport(sender : AnyObject) {
         println("Export")
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+        
     }
     
     //@Remove photo from Collection
@@ -100,7 +108,28 @@ class ViewPhoto: UIViewController {
             println(self.imgView.image?.CIImage?.description)
         })
     }
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.addAttachmentData(imgView.image?.imageAsset as NSData, mimeType: "image/jpeg", fileName: "EventName")
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["someone@somewhere.com"])
+        mailComposerVC.setSubject("Event Name")
+        mailComposerVC.setMessageBody("Even description!", isHTML: false)
+        
+        
+        return mailComposerVC
+    }
     
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
 }

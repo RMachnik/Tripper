@@ -24,6 +24,7 @@
 		A96E833A1A4F535B00289C70 /* PhotoAlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E83391A4F535B00289C70 /* PhotoAlbumVC.swift */; };
 		A96E833E1A4F565B00289C70 /* ViewPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E833D1A4F565B00289C70 /* ViewPhotoVC.swift */; };
 		A96E83401A4F568500289C70 /* PhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E833F1A4F568500289C70 /* PhotoThumbnail.swift */; };
+		A96E83471A4F77C600289C70 /* MailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96E83461A4F77C600289C70 /* MailVC.swift */; };
 		A9FA81271A376C9600DCE603 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9FA81261A376C9600DCE603 /* Photos.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		A96E83391A4F535B00289C70 /* PhotoAlbumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumVC.swift; sourceTree = "<group>"; };
 		A96E833D1A4F565B00289C70 /* ViewPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewPhotoVC.swift; path = ../ViewPhotoVC.swift; sourceTree = "<group>"; };
 		A96E833F1A4F568500289C70 /* PhotoThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnail.swift; sourceTree = "<group>"; };
+		A96E83461A4F77C600289C70 /* MailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailVC.swift; sourceTree = "<group>"; };
 		A9FA81261A376C9600DCE603 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 		5595A0B519A94B1D00A7EB86 /* testing */ = {
 			isa = PBXGroup;
 			children = (
+				A96E83451A4F77BA00289C70 /* Email */,
 				A96E83441A4F570200289C70 /* VC */,
 				A96E83431A4F56D200289C70 /* Data */,
 				A96E83421A4F56C000289C70 /* Location */,
@@ -181,6 +184,14 @@
 				55A393EE19A989E400535411 /* TableVC.swift */,
 			);
 			name = VC;
+			sourceTree = "<group>";
+		};
+		A96E83451A4F77BA00289C70 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				A96E83461A4F77C600289C70 /* MailVC.swift */,
+			);
+			name = Email;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 				55A393F119A989E400535411 /* AddEventVC.swift in Sources */,
 				55A393F219A989E400535411 /* DetailVC.swift in Sources */,
 				A96E832E1A4EAB4B00289C70 /* LocationService.swift in Sources */,
+				A96E83471A4F77C600289C70 /* MailVC.swift in Sources */,
 				55A393F419A989E400535411 /* PersistenceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

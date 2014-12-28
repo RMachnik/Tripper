@@ -34,24 +34,44 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.albumFound = true
             self.assetCollection = collection.firstObject as PHAssetCollection
         }else{
-            //Album placeholder for the asset collection, used to reference collection in completion handler
-            var albumPlaceholder:PHObjectPlaceholder!
-            //create the folder
-            NSLog("\nFolder \"%@\" does not exist\nCreating now...", albumName)
-            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(albumName)
-                albumPlaceholder = request.placeholderForCreatedAssetCollection
-                },
-                completionHandler: {(success:Bool, error:NSError!)in
-                    NSLog("Creation of folder -> %@", (success ? "Success":"Error!"))
-                    println(error)
-                    self.albumFound = (success ? true:false)
-                    if(success){
-                        let collection = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([albumPlaceholder.localIdentifier], options: nil)
-                        self.assetCollection = collection?.firstObject as PHAssetCollection
+            PHPhotoLibrary.requestAuthorization
+                { (PHAuthorizationStatus status) -> Void in
+                    switch (status)
+                    {
+                    case .Authorized:
+                        // Permission Granted
+                        println("Write your code here")
+                        self.initializeNewPhotoAlbum()
+                    case .Denied:
+                        // Permission Denied
+                        println("User denied")
+                    default:
+                        println("Restricted")
                     }
-            })
+            }
+            
         }
+    }
+    
+    func initializeNewPhotoAlbum(){
+        //Album placeholder for the asset collection, used to reference collection in completion handler
+        var albumPlaceholder:PHObjectPlaceholder!
+        //create the folder
+        NSLog("\nFolder \"%@\" does not exist\nCreating now...", albumName)
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+            let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(albumName)
+            albumPlaceholder = request.placeholderForCreatedAssetCollection
+            },
+            completionHandler: {(success:Bool, error:NSError!)in
+                NSLog("Creation of folder -> %@", (success ? "Success":"Error!"))
+                println(error)
+                self.albumFound = (success ? true:false)
+                if(success){
+                    let collection = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([albumPlaceholder.localIdentifier], options: nil)
+                    self.assetCollection = collection?.firstObject as PHAssetCollection
+                }
+        })
+
     }
     
     //Actions & Outlets
