@@ -31,7 +31,7 @@ class DetailVC: UIViewController {
         //Assign String var to NavBar title
         self.title = event.name
         
-        cellDetailLabel.numberOfLines = 0
+        cellDetailLabel.sizeThatFits(CGSizeMake(3, 3))
         
         // Do any additional setup after loading the view.
     }

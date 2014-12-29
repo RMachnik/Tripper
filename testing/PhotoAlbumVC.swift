@@ -34,11 +34,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.albumFound = true
             self.assetCollection = collection.firstObject as PHAssetCollection
         }else{
-            requestForPhotoAuthAndInitAlbum()
+            requestForPhotoAuthAndInitAlbum(albumName)
         }
     }
     
-    func requestForPhotoAuthAndInitAlbum(){
+    func requestForPhotoAuthAndInitAlbum(album: String){
         PHPhotoLibrary.requestAuthorization
             { (PHAuthorizationStatus status) -> Void in
                 switch (status)
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 case .Authorized:
                     // Permission Granted
                     println("Write your code here")
-                    self.initializeNewPhotoAlbum()
+                    self.initializeNewPhotoAlbum(album)
                 case .Denied:
                     // Permission Denied
                     println("User denied")
@@ -57,13 +57,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
-    func initializeNewPhotoAlbum(){
+    func initializeNewPhotoAlbum(album: String){
         //Album placeholder for the asset collection, used to reference collection in completion handler
         var albumPlaceholder:PHObjectPlaceholder!
         //create the folder
-        NSLog("\nFolder \"%@\" does not exist\nCreating now...", albumName)
+        NSLog("\nFolder \"%@\" does not exist\nCreating now...", album)
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(albumName)
+            let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(album)
             albumPlaceholder = request.placeholderForCreatedAssetCollection
             },
             completionHandler: {(success:Bool, error:NSError!)in
@@ -135,11 +135,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.navigationController?.hidesBarsOnTap = false   //!! Use optional chaining
         self.photosAsset = PHAsset.fetchAssetsInAssetCollection(self.assetCollection, options: nil)
         
-        //TODO: Insert a label that says 'No Photos' when empty
+        checkIfEmpty()
         
         self.collectionView.reloadData()
     }
     
+    
+    func checkIfEmpty(){
+        if(self.photosAsset != nil && self.photosAsset.count == 0){
+            println("album is empty")
+            self.title = "No photos"
+        }else{
+            self.title = albumName
+        }
+    }
     
     //UICollectionViewDataSource Methods
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
