@@ -18,29 +18,23 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var imgView : UIImageView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.hidesBarsOnTap = true    //!!Added Optional Chaining
-        
+        self.navigationController?.hidesBarsOnTap = true
         self.displayPhoto()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    //@Return to photos
     @IBAction func btnCancel(sender : AnyObject) {
-        self.navigationController?.popToRootViewControllerAnimated(true) //!!Added Optional Chaining
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    //@Export photo
     @IBAction func btnExport(sender : AnyObject) {
         println("Export")
         let mailComposeViewController = configuredMailComposeViewController()
@@ -52,13 +46,15 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
-    //@Remove photo from Collection
     @IBAction func btnTrash(sender : AnyObject) {
-        let alert = UIAlertController(title: "Delete Image", message: "Are you sure you want to delete this image?", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .Default,
+        let alert = UIAlertController(
+            title: "Delete Image",
+            message: "Are you sure you want to delete this image?",
+            preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(
+            title: "Yes", style: .Default,
             handler: {(alertAction)in
                 PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                    //Delete Photo
                     let request = PHAssetCollectionChangeRequest(forAssetCollection: self.assetCollection)
                     request.removeAssets([self.photosAsset[self.index]])
                     },
@@ -66,7 +62,6 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
                         NSLog("\nDeleted Image -> %@", (success ? "Success":"Error!"))
                         alert.dismissViewControllerAnimated(true, completion: nil)
                         if(success){
-                            // Move to the main thread to execute
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.photosAsset = PHAsset.fetchAssetsInAssetCollection(self.assetCollection, options: nil)
                                 if(self.photosAsset.count == 0){
@@ -86,21 +81,15 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(alertAction)in
-            //Do not delete photo
             alert.dismissViewControllerAnimated(true, completion: nil)
         }))
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
 
-    
-    
-    
     func displayPhoto(){
-        // Set targetSize of image to iPhone screen size
         let screenSize: CGSize = UIScreen.mainScreen().bounds.size
         let targetSize = CGSizeMake(screenSize.width, screenSize.height)
-        
         let imageManager = PHImageManager.defaultManager()
         var ID = imageManager.requestImageForAsset(self.photosAsset[self.index] as PHAsset, targetSize: targetSize, contentMode: .AspectFit, options: nil, resultHandler: {
             (result, info)->Void in
@@ -112,12 +101,10 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.addAttachmentData(imgView.image?.imageAsset as NSData, mimeType: "image/jpeg", fileName: "EventName")
-        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        
+        mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients(["someone@somewhere.com"])
         mailComposerVC.setSubject("Event Name")
         mailComposerVC.setMessageBody("Even description!", isHTML: false)
-        
         
         return mailComposerVC
     }
@@ -127,7 +114,6 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
         sendMailErrorAlert.show()
     }
     
-    // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         controller.dismissViewControllerAnimated(true, completion: nil)
     }

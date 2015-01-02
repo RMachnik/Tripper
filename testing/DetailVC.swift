@@ -6,10 +6,9 @@ class DetailVC: UIViewController {
     
     //Our label for displaying var "items/cellName"
     @IBOutlet var cellNameLabel: UILabel!
-    @IBOutlet var cellDetailLabel: UILabel!
     @IBOutlet var cellSubmittedLabel: UILabel!
     @IBOutlet var cellLocation: UILabel!
-
+    @IBOutlet var cellDescription: UITextView!
     //Receiving variable assigned to MainVC's var "items"
     var eventId:Int = 0
     
@@ -24,16 +23,13 @@ class DetailVC: UIViewController {
         //Assign your UILabel text to your String
         var event:Event = eventMgr.events[eventId]
         cellNameLabel.text = event.name
-        cellDetailLabel.text = event.description
+        cellDescription.text = event.description
         cellSubmittedLabel.text = event.submitted
         cellLocation.text = event.location
         
         //Assign String var to NavBar title
         self.title = event.name
         
-        cellDetailLabel.sizeThatFits(CGSizeMake(3, 3))
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

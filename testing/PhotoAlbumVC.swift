@@ -89,7 +89,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.presentViewController(picker, animated: true, completion: nil)
         }else{
             //no camera available
-            var alert = UIAlertController(title: "Error", message: "There is no camera available", preferredStyle: .Alert)
+            var alert = UIAlertController(title: "Error", message: "There is no camera available!", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: {(alertAction)in
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
@@ -143,7 +143,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func checkIfEmpty(){
         if(self.photosAsset != nil && self.photosAsset.count == 0){
-            println("album is empty")
+            println("Album is empty!")
             self.title = "No photos"
         }else{
             self.title = albumName
