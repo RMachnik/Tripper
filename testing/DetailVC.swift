@@ -22,6 +22,7 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         
         var event:Event = eventMgr.events[eventId]
+        eventMgr.currentID = eventId
         self.title = event.name
         cellNameLabel.text = event.name
         cellDescription.text = event.description

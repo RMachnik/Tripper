@@ -3,7 +3,7 @@ import UIKit
 import Photos
 
 let reuseIdentifier = "PhotoCell"
-let albumName = "App Folder"
+//let albumName = "App Folder"
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var albumFound : Bool = false
@@ -11,10 +11,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var photosAsset: PHFetchResult!
     var assetThumbnailSize:CGSize!
     @IBOutlet var collectionView : UICollectionView!
+    var albumName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        println("Getting event for current id \(eventMgr.currentID)")
+        var event : Event = eventMgr.events[eventMgr.currentID]
+        self.albumName = event.name
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
         let collection:PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
@@ -25,6 +28,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }else{
             requestForPhotoAuthAndInitAlbum(albumName)
         }
+        self.title = albumName
     }
     
     func requestForPhotoAuthAndInitAlbum(album: String){

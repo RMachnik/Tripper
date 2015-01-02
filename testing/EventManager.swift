@@ -13,6 +13,7 @@ class EventManager: NSObject {
     
     var events = [Event]()
     var persistenceHelper: PersistenceHelper = PersistenceHelper()
+    var currentID : Int = 0
     
     override init(){
         
