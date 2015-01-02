@@ -6,8 +6,8 @@ import MapKit
 
 
 class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
-    var geocoder = CLGeocoder()
     var lastLocation: String = ""
+    var locationService = LocationService()
     
     @IBOutlet var txtName: UITextField!
     @IBOutlet var txtDescription: UITextView!
@@ -32,28 +32,14 @@ class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerC
     
     @IBAction func locationEditingEnd(sender: AnyObject) {
         if(lastLocation != location.text){
-            runGeocoding(location.text)
+            runGeocoding(location.text,mapView :mapView)
             println("Location txt changed, geocoding fired!")
         }
         lastLocation = location.text
     }
     
-    func runGeocoding(address: String){
-        geocoder.geocodeAddressString(address, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil{
-                println("There was an error in geocoding \(error)")
-            }
-            if let placemark = placemarks?[0] as? CLPlacemark {
-                var mkPlacemark  = MKPlacemark(placemark: placemark)
-                var coordinates = mkPlacemark.location.coordinate
-                println(coordinates.latitude)
-                println(coordinates.longitude)
-                let span = MKCoordinateSpanMake(0.05, 0.05)
-                let region = MKCoordinateRegion(center: placemark.location.coordinate, span: span)
-                self.mapView.setRegion(region, animated: true)
-                self.mapView.addAnnotation(mkPlacemark)
-            }
-        })
+    func runGeocoding(address: String, mapView : MKMapView!){
+            locationService.getGeocodedLocation(address, mapView: mapView)
     }
     
     func textFieldShouldReturn(textField: UITextField!) ->Bool {

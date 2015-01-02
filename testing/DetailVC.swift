@@ -1,15 +1,18 @@
 
 
 import UIKit
+import MapKit
 
 class DetailVC: UIViewController {
+    let localisationService = LocationService()
     
-    //Our label for displaying var "items/cellName"
     @IBOutlet var cellNameLabel: UILabel!
     @IBOutlet var cellSubmittedLabel: UILabel!
     @IBOutlet var cellLocation: UILabel!
     @IBOutlet var cellDescription: UITextView!
-    //Receiving variable assigned to MainVC's var "items"
+    @IBOutlet var mapView: MKMapView!
+    
+    
     var eventId:Int = 0
     
     required init(coder aDecoder: NSCoder) {
@@ -26,6 +29,7 @@ class DetailVC: UIViewController {
         cellDescription.text = event.description
         cellSubmittedLabel.text = event.submitted
         cellLocation.text = event.location
+        localisationService.getGeocodedLocation(event.location, mapView: mapView)
         
         //Assign String var to NavBar title
         self.title = event.name

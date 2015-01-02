@@ -161,6 +161,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VhI-Ln-aQ4">
+                                <rect key="frame" x="36" y="341" width="240" height="128"/>
+                            </mapView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5J-J6-mFt">
                                 <rect key="frame" x="20" y="72" width="280" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
@@ -191,6 +194,7 @@
                         <outlet property="cellLocation" destination="zpw-E1-0ju" id="wKf-jI-K7a"/>
                         <outlet property="cellNameLabel" destination="g5J-J6-mFt" id="Bn2-Yd-pbh"/>
                         <outlet property="cellSubmittedLabel" destination="wLu-DI-UUK" id="hrR-nv-DJt"/>
+                        <outlet property="mapView" destination="VhI-Ln-aQ4" id="C16-vQ-MUA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UR4-mu-70F" userLabel="First Responder" sceneMemberID="firstResponder"/>

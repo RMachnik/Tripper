@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class LocationService : NSObject, CLLocationManagerDelegate{
-    
+    let geocoder = CLGeocoder()
     let locationManager = CLLocationManager()
     
     func getCurrentLocation(){
@@ -71,6 +72,25 @@ class LocationService : NSObject, CLLocationManagerDelegate{
             println(country)
         }
         
+    }
+    
+    func getGeocodedLocation(address: String,mapView: MKMapView){
+        geocoder.geocodeAddressString(address, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil{
+                println("There was an error in geocoding \(error)")
+            }
+            if let placemark = placemarks?[0] as? CLPlacemark {
+                var mkPlacemark  = MKPlacemark(placemark: placemark)
+                var coordinates = mkPlacemark.location.coordinate
+                println(coordinates.latitude)
+                println(coordinates.longitude)
+                let span = MKCoordinateSpanMake(0.05, 0.05)
+                let region = MKCoordinateRegion(center: placemark.location.coordinate, span: span)
+                mapView.setRegion(region, animated: true)
+                mapView.addAnnotation(mkPlacemark)
+            }
+        })
+
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
