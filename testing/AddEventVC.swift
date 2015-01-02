@@ -4,8 +4,8 @@ import MapKit
 
 
 class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
-    var lastLocation: String = ""
-    var locationService = LocationService()
+    private var lastLocation: String = ""
+    private var locationService = LocationService()
     
     @IBOutlet var txtName: UITextField!
     @IBOutlet var txtDescription: UITextView!
@@ -78,7 +78,7 @@ class AddTaskVC: UIViewController ,UINavigationControllerDelegate,UIImagePickerC
         
     }
     
-    func cleanTextForm(){
+    private func cleanTextForm(){
         txtName.text = ""
         txtDescription.text = ""
         txtSubmitted.text = ""

@@ -3,8 +3,8 @@ import CoreLocation
 import MapKit
 
 class LocationService : NSObject, CLLocationManagerDelegate{
-    let geocoder = CLGeocoder()
-    let locationManager = CLLocationManager()
+    private let geocoder = CLGeocoder()
+    private let locationManager = CLLocationManager()
     
     func getCurrentLocation(){
         

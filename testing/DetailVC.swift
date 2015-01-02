@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 
 class DetailVC: UIViewController {
-    let localisationService = LocationService()
+    private let localisationService = LocationService()
     
     @IBOutlet var cellNameLabel: UILabel!
     @IBOutlet var cellSubmittedLabel: UILabel!

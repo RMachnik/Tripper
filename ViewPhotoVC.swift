@@ -3,8 +3,8 @@ import Photos
 import MessageUI
 
 class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
-    let messageComposer = MessageComposer()
-    let mailComposer = MailComposer()
+    private let messageComposer = MessageComposer()
+    private let mailComposer = MailComposer()
     var assetCollection: PHAssetCollection!
     var photosAsset: PHFetchResult!
     var index: Int = 0
@@ -76,7 +76,7 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
     }
 
-    func displayPhoto(){
+    private func displayPhoto(){
         let screenSize: CGSize = UIScreen.mainScreen().bounds.size
         let targetSize = CGSizeMake(screenSize.width, screenSize.height)
         let imageManager = PHImageManager.defaultManager()
@@ -88,12 +88,12 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
         })
     }
     
-    func showSendMailErrorAlert() {
+    private func showSendMailErrorAlert() {
         let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()
     }
     
-    func sendEmail(){
+    private func sendEmail(){
         let mailComposeViewController = mailComposer.configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposeViewController, animated: true, completion: nil)
@@ -101,7 +101,7 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
             self.showSendMailErrorAlert()
         }
     }
-    func sendTextMessage(){
+    private func sendTextMessage(){
         if (messageComposer.canSendText()) {
             let messageComposeVC = messageComposer.configuredMessageComposeViewController("Content of message")
             presentViewController(messageComposeVC, animated: true, completion: nil)

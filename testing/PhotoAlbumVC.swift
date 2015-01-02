@@ -31,7 +31,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.title = albumName
     }
     
-    func requestForPhotoAuthAndInitAlbum(album: String){
+    private func requestForPhotoAuthAndInitAlbum(album: String){
         PHPhotoLibrary.requestAuthorization
             { (PHAuthorizationStatus status) -> Void in
                 switch (status)
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    func initializeNewPhotoAlbum(album: String){
+    private func initializeNewPhotoAlbum(album: String){
         var albumPlaceholder:PHObjectPlaceholder!
         NSLog("\nFolder \"%@\" does not exist\nCreating now...", album)
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
@@ -123,7 +123,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     
-    func checkIfEmpty(){
+    private func checkIfEmpty(){
         if(self.photosAsset != nil && self.photosAsset.count == 0){
             println("Album is empty!")
             self.title = "No photos"
