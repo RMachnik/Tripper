@@ -1,17 +1,10 @@
-//
-//  ViewPhoto.swift
-//  Photos Gallery App
-//
-//  Created by Tony on 7/7/14.
-//  Copyright (c) 2014 Abbouds Corner. All rights reserved.
-//
-//  Updated for Xcode 6.0.1 GM
-
 import UIKit
 import Photos
 import MessageUI
 
 class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
+    let messageComposer = MessageComposer()
+    let mailComposer = MailComposer()
     var assetCollection: PHAssetCollection!
     var photosAsset: PHFetchResult!
     var index: Int = 0
@@ -36,14 +29,10 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func btnExport(sender : AnyObject) {
-        println("Export")
-        let mailComposeViewController = configuredMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            self.showSendMailErrorAlert()
-        }
-        
+        println("Trying to send email!")
+        sendEmail()
+        println("Trying to send txt message!")
+        sendTextMessage()
     }
     
     @IBAction func btnTrash(sender : AnyObject) {
@@ -98,24 +87,28 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
             println(self.imgView.image?.CIImage?.description)
         })
     }
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.addAttachmentData(imgView.image?.imageAsset as NSData, mimeType: "image/jpeg", fileName: "EventName")
-        mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["someone@somewhere.com"])
-        mailComposerVC.setSubject("Event Name")
-        mailComposerVC.setMessageBody("Even description!", isHTML: false)
-        
-        return mailComposerVC
-    }
     
     func showSendMailErrorAlert() {
         let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()
     }
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func sendEmail(){
+        let mailComposeViewController = mailComposer.configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    func sendTextMessage(){
+        if (messageComposer.canSendText()) {
+            let messageComposeVC = messageComposer.configuredMessageComposeViewController("Content of message")
+            presentViewController(messageComposeVC, animated: true, completion: nil)
+        } else {
+            let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
+            errorAlert.show()
+        }
     }
     
     

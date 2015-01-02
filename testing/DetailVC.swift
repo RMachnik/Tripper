@@ -1,5 +1,3 @@
-
-
 import UIKit
 import MapKit
 
@@ -23,22 +21,18 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Assign your UILabel text to your String
         var event:Event = eventMgr.events[eventId]
+        self.title = event.name
         cellNameLabel.text = event.name
         cellDescription.text = event.description
         cellSubmittedLabel.text = event.submitted
         cellLocation.text = event.location
+        
         localisationService.getGeocodedLocation(event.location, mapView: mapView)
-        
-        //Assign String var to NavBar title
-        self.title = event.name
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

@@ -1,10 +1,7 @@
-
-
 import UIKit
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //This is your tableView
     @IBOutlet var table: UITableView!
     
     override func viewDidLoad() {

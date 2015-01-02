@@ -1,11 +1,3 @@
-//
-//  LocationService.swift
-//  testing
-//
-//  Created by RMachnik on 27.12.2014.
-//  Copyright (c) 2014 David Owens. All rights reserved.
-//
-
 import UIKit
 import CoreLocation
 import MapKit

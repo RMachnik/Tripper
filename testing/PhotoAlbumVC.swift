@@ -1,18 +1,9 @@
-//
-//  ViewController.swift
-//  Photos Gallery App
-//
-//  Created by Tony on 7/7/14.
-//  Copyright (c) 2014 Abbouds Corner. All rights reserved.
-//
-//  Updated to Xcode 6.0.1 GM
 
 import UIKit
 import Photos
 
 let reuseIdentifier = "PhotoCell"
-let albumName = "App Folder"            //App specific folder name
-
+let albumName = "App Folder"
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var albumFound : Bool = false
@@ -24,13 +15,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Check if the folder exists, if not, create it
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
         let collection:PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
         
         if let first_Obj:AnyObject = collection.firstObject{
-            //found the album
             self.albumFound = true
             self.assetCollection = collection.firstObject as PHAssetCollection
         }else{
@@ -44,23 +33,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 switch (status)
                 {
                 case .Authorized:
-                    // Permission Granted
                     println("Write your code here")
                     self.initializeNewPhotoAlbum(album)
                 case .Denied:
-                    // Permission Denied
                     println("User denied")
                 default:
                     println("Restricted")
                 }
         }
-
     }
     
     func initializeNewPhotoAlbum(album: String){
-        //Album placeholder for the asset collection, used to reference collection in completion handler
         var albumPlaceholder:PHObjectPlaceholder!
-        //create the folder
         NSLog("\nFolder \"%@\" does not exist\nCreating now...", album)
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
             let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(album)
@@ -78,17 +62,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
-    //Actions & Outlets
     @IBAction func btnCamera(sender : AnyObject) {
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
-            //load the camera interface
             var picker : UIImagePickerController = UIImagePickerController()
             picker.sourceType = UIImagePickerControllerSourceType.Camera
             picker.delegate = self
             picker.allowsEditing = false
             self.presentViewController(picker, animated: true, completion: nil)
         }else{
-            //no camera available
             var alert = UIAlertController(title: "Error", message: "There is no camera available!", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: {(alertAction)in
                 alert.dismissViewControllerAnimated(true, completion: nil)
@@ -125,14 +106,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     override func viewWillAppear(animated: Bool) {
         println("ViewWillAppear")
-        
-        // Get size of the collectionView cell for thumbnail image
         let scale:CGFloat = UIScreen.mainScreen().scale
         let cellSize = (self.collectionView.collectionViewLayout as UICollectionViewFlowLayout).itemSize
         self.assetThumbnailSize = CGSizeMake(cellSize.width, cellSize.height)
         
-        //fetch the photos from collection
-        self.navigationController?.hidesBarsOnTap = false   //!! Use optional chaining
+        self.navigationController?.hidesBarsOnTap = false
         self.photosAsset = PHAsset.fetchAssetsInAssetCollection(self.assetCollection, options: nil)
         
         checkIfEmpty()
@@ -161,13 +139,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let cell: PhotoThumbnail = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as PhotoThumbnail
-        
-        //Modify the cell
         let asset: PHAsset = self.photosAsset[indexPath.item] as PHAsset
-        
-        // Create options for retrieving image (Degrades quality if using .Fast)
-        //        let imageOptions = PHImageRequestOptions()
-        //        imageOptions.resizeMode = PHImageRequestOptionsResizeMode.Fast
+
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: self.assetThumbnailSize, contentMode: .AspectFill, options: nil, resultHandler: {(result, info)in
             cell.setThumbnailImage(result)
         })
@@ -189,9 +162,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //UIImagePickerControllerDelegate Methods
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!){
         let image = info.objectForKey("UIImagePickerControllerOriginalImage") as UIImage
-        
-        //Implement if allowing user to edit the selected image
-        //let editedImage = info.objectForKey("UIImagePickerControllerEditedImage") as UIImage
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0), {

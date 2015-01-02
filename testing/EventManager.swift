@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 var eventMgr:EventManager = EventManager()

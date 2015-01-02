@@ -1,15 +1,7 @@
-//
-//  MailService.swift
-//  testing
-//
-//  Created by RMachnik on 28.12.2014.
-//  Copyright (c) 2014 David Owens. All rights reserved.
-//
-
 import UIKit
 import MessageUI
 
-class MailVC : UIViewController,MFMailComposeViewControllerDelegate {
+class MailComposer : UIViewController,MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
