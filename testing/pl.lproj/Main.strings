@@ -1,0 +1,48 @@
+
+/* Class = "IBUINavigationItem"; title = "Full-Size Image"; ObjectID = "2Hr-Hd-fit"; */
+"2Hr-Hd-fit.title" = "Pelen obraz";
+
+/* Class = "IBUIBarButtonItem"; title = "Details"; ObjectID = "2KX-Ue-IWX"; */
+"2KX-Ue-IWX.title" = "Detale";
+
+/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "9nd-pm-kUZ"; */
+"9nd-pm-kUZ.title" = " ";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "AQK-Q6-68L"; */
+"AQK-Q6-68L.text" = "Nazwa";
+
+/* Class = "IBUILabel"; text = "who was there?"; ObjectID = "MVd-Oh-ERu"; */
+"MVd-Oh-ERu.text" = "kto tam byl?";
+
+/* Class = "IBUINavigationItem"; title = "Add your event"; ObjectID = "VmD-ao-Ivz"; */
+"VmD-ao-Ivz.title" = "Nowe wydarzenie";
+
+/* Class = "IBUITextField"; placeholder = "Event name"; ObjectID = "YXy-Tt-mZT"; */
+"YXy-Tt-mZT.placeholder" = "Nazwa wydarzenia";
+
+/* Class = "IBUINavigationItem"; title = "Photo Album"; ObjectID = "cI8-QW-G9H"; */
+"cI8-QW-G9H.title" = "Album";
+
+/* Class = "IBUITextView"; text = "Description"; ObjectID = "dhS-E1-NTy"; */
+"dhS-E1-NTy.text" = "Opis";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "g5J-J6-mFt"; */
+"g5J-J6-mFt.text" = "Nazwa";
+
+/* Class = "IBUITextField"; placeholder = "Location name"; ObjectID = "gfM-k3-F13"; */
+"gfM-k3-F13.placeholder" = "Miejsce";
+
+/* Class = "IBUITextField"; placeholder = "Who...?"; ObjectID = "hGg-yv-cPl"; */
+"hGg-yv-cPl.placeholder" = "Kto...?";
+
+/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "pHp-gI-b98"; */
+"pHp-gI-b98.title" = " ";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "wLu-DI-UUK"; */
+"wLu-DI-UUK.text" = "Nazwa";
+
+/* Class = "IBUILabel"; accessibilityLabel = "Who"; ObjectID = "zpw-E1-0ju"; */
+"zpw-E1-0ju.accessibilityLabel" = "Kto";
+
+/* Class = "IBUILabel"; text = "Localisation"; ObjectID = "zpw-E1-0ju"; */
+"zpw-E1-0ju.text" = "Lokalizacja";

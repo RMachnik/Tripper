@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  testing
+
+  Created by RMachnik on 15.01.2015.
+  Copyright (c) 2015 Rafal Machnik. All rights reserved.
+*/
+"not_send_email"="Nie mozna wyslac emaila";
+"deleteImage"="Usun zdjecie";
+"deleteImageAssurance"="Jestes pewny ze chcesz usunac to zdjecie?";
+"noCamera"="Kamera jest niedostepna!";
+"error"="Blad";
+"couldNotSendEmail"="Nie udalo sie wyslac maila";
+"couldNotSendEmailMsg"="Sprawdz konfiguracje swojej skrzynki";
+"noPhotos"="Brak zdjec";

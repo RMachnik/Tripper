@@ -28,7 +28,9 @@ class MailComposer : UIViewController,MFMailComposeViewControllerDelegate {
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        var couldNotSendEmail = NSLocalizedString("not_send_email", comment: "")
+        var yourDeviceIsNotAbleToSendEmail = NSLocalizedString("not_send_email", comment: "")
+        let sendMailErrorAlert = UIAlertView(title: couldNotSendEmail, message: yourDeviceIsNotAbleToSendEmail, delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()
     }
     

@@ -36,9 +36,11 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func btnTrash(sender : AnyObject) {
+        var deleteImageMsg = NSLocalizedString("deleteImage", comment: "")
+        var deleteAssurance = NSLocalizedString("deleteImageAssurance",comment:"")
         let alert = UIAlertController(
-            title: "Delete Image",
-            message: "Are you sure you want to delete this image?",
+            title: deleteImageMsg,
+            message: deleteAssurance,
             preferredStyle: .Alert)
         alert.addAction(UIAlertAction(
             title: "Yes", style: .Default,
@@ -89,7 +91,9 @@ class ViewPhoto: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     private func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        var couldNotSendEmail = NSLocalizedString("couldNotSendEmail",comment:"")
+        var couldNotSendEmailMsg = NSLocalizedString("couldNotSendEmailMsg",comment:"")
+        let sendMailErrorAlert = UIAlertView(title: couldNotSendEmail, message: couldNotSendEmailMsg, delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()
     }
     

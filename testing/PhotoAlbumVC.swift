@@ -74,7 +74,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             picker.allowsEditing = false
             self.presentViewController(picker, animated: true, completion: nil)
         }else{
-            var alert = UIAlertController(title: "Error", message: "There is no camera available!", preferredStyle: .Alert)
+            var camerAlert = NSLocalizedString("noCamera",comment:"")
+            var errorMsg = NSLocalizedString("error",comment:"")
+            var alert = UIAlertController(title: errorMsg, message: camerAlert, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: {(alertAction)in
                 alert.dismissViewControllerAnimated(true, completion: nil)
             }))
@@ -126,7 +128,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private func checkIfEmpty(){
         if(self.photosAsset != nil && self.photosAsset.count == 0){
             println("Album is empty!")
-            self.title = "No photos"
+            self.title =  NSLocalizedString("noPhotos",comment:"")
         }else{
             self.title = albumName
         }
